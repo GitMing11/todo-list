@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* 1. 테마 변수 매핑 */
+@theme {
+  --color-mainBg: var(--main-bg);
+  --color-subBg: var(--sub-bg);
+  --color-highlight: var(--highlight);
+  
+  /* 새로 추가된 텍스트 색상 */
+  --color-textMain: var(--text-main);
+  --color-textSub: var(--text-sub);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* 애니메이션 */
+  --animate-fade-in: fade-in 0.2s ease-out;
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
+/* 2. CSS 변수 선언 */
+:root {
+  /* Light Mode (블루 톤 기반) */
+  --main-bg: #DBEAFE;    /* blue-100: 배경 */
+  --sub-bg: #BFDBFE;     /* blue-200: 보조 배경 (버튼, 활성탭) */
+  --highlight: #1E3A8A;  /* blue-900: 강조/포인트 (로고, 헤드라인) */
+  
+  /* 텍스트 색상 추가 */
+  --text-main: #1e293b;  /* slate-800: 본문 기본 (너무 새까맣지 않은 진회색) */
+  --text-sub: #64748b;   /* slate-500: 날짜, 설명 등 보조 텍스트 */
+}
+
+.dark {
+  /* Dark Mode (다크 그레이 톤 기반) */
+  --main-bg: #1e1e1e;    /* gray-900 수준 */
+  --sub-bg: #2d2d2d;     /* gray-800 수준 */
+  --highlight: #ffffff;  /* white: 강조 */
+
+  /* 텍스트 색상 추가 */
+  --text-main: #e2e8f0;  /* slate-200: 다크모드 본문 (눈이 편한 연회색) */
+  --text-sub: #94a3b8;   /* slate-400: 다크모드 보조 */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--main-bg);
+  color: var(--text-main); /* 기본 색상을 highlight -> text-main으로 변경 */
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
