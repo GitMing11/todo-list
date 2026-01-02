@@ -6,9 +6,18 @@
   --color-subBg: var(--sub-bg);
   --color-highlight: var(--highlight);
   
-  /* 새로 추가된 텍스트 색상 */
   --color-textMain: var(--text-main);
   --color-textSub: var(--text-sub);
+
+  /* 상태별 컬러 (새로 추가됨) */
+  --color-info: var(--status-info);       /* 진행 중 (파랑) */
+  --color-infoBg: var(--status-info-bg);  /* 진행 중 배경 */
+  
+  --color-success: var(--status-success);      /* 완료 (초록) */
+  --color-successBg: var(--status-success-bg); /* 완료 배경 */
+  
+  --color-warning: var(--status-warning);      /* 급함 (노랑/주황) */
+  --color-warningBg: var(--status-warning-bg); /* 급함 배경 */
 
   /* 애니메이션 */
   --animate-fade-in: fade-in 0.2s ease-out;
@@ -20,30 +29,48 @@
 
 /* 2. CSS 변수 선언 */
 :root {
-  /* Light Mode (블루 톤 기반) */
-  --main-bg: #DBEAFE;    /* blue-100: 배경 */
-  --sub-bg: #BFDBFE;     /* blue-200: 보조 배경 (버튼, 활성탭) */
-  --highlight: #1E3A8A;  /* blue-900: 강조/포인트 (로고, 헤드라인) */
+  /* Light Mode */
+  --main-bg: #DBEAFE;    /* 배경 */
+  --sub-bg: #BFDBFE;     /* 보조 배경 */
+  --highlight: #1E3A8A;  /* 강조 */
   
-  /* 텍스트 색상 추가 */
-  --text-main: #1e293b;  /* slate-800: 본문 기본 (너무 새까맣지 않은 진회색) */
-  --text-sub: #64748b;   /* slate-500: 날짜, 설명 등 보조 텍스트 */
+  --text-main: #1e293b;  /* 본문 */
+  --text-sub: #64748b;   /* 서브 텍스트 */
+
+  /* 상태 컬러 (Light) */
+  --status-info: #2563eb;       /* blue-600 */
+  --status-info-bg: #eff6ff;    /* blue-50 */
+  
+  --status-success: #16a34a;    /* green-600 */
+  --status-success-bg: #f0fdf4; /* green-50 */
+  
+  --status-warning: #ca8a04;    /* yellow-600 */
+  --status-warning-bg: #fefce8; /* yellow-50 */
 }
 
 .dark {
-  /* Dark Mode (다크 그레이 톤 기반) */
-  --main-bg: #1e1e1e;    /* gray-900 수준 */
-  --sub-bg: #2d2d2d;     /* gray-800 수준 */
-  --highlight: #ffffff;  /* white: 강조 */
+  /* Dark Mode */
+  --main-bg: #1e1e1e;
+  --sub-bg: #2d2d2d;
+  --highlight: #ffffff;
 
-  /* 텍스트 색상 추가 */
-  --text-main: #e2e8f0;  /* slate-200: 다크모드 본문 (눈이 편한 연회색) */
-  --text-sub: #94a3b8;   /* slate-400: 다크모드 보조 */
+  --text-main: #e2e8f0;
+  --text-sub: #94a3b8;
+
+  /* 상태 컬러 (Dark - 눈이 편안한 파스텔 톤 + 어두운 배경) */
+  --status-info: #60a5fa;       /* blue-400 */
+  --status-info-bg: #1e3a8a;    /* blue-900 (투명도 대신 짙은색 사용) */
+  
+  --status-success: #4ade80;    /* green-400 */
+  --status-success-bg: #14532d; /* green-900 */
+  
+  --status-warning: #facc15;    /* yellow-400 */
+  --status-warning-bg: #713f12; /* yellow-900 */
 }
 
 body {
   background: var(--main-bg);
-  color: var(--text-main); /* 기본 색상을 highlight -> text-main으로 변경 */
+  color: var(--text-main);
   font-family: Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

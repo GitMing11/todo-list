@@ -88,11 +88,11 @@ export default function Header() {
 					</button>
 
 					<Link
-						href="/settings"
+						href="/user"
 						className={`ml-1 flex items-center justify-center w-8 h-8 rounded-full border transition-all
                             ${
-															pathname === '/settings'
-																? 'bg-subBg border-highlight/30' // 설정 페이지일 때 강조 (선택 사항)
+															pathname === '/user'
+																? 'bg-subBg border-highlight/30'
 																: 'bg-subBg border-highlight/10 hover:border-highlight/30'
 														}
                         `}

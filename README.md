@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# TODO
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+home/page.tsx - 하드코딩된 숫자들 수정 필요
+components/Todoinput.tsx - 디자인 맘에 안듦
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+Prisma와 클라이언트 설치
+npm install prisma --save-dev
+npm install @prisma/client
 
-To learn more about Next.js, take a look at the following resources:
+Prisma 초기화 (prisma 폴더와 .env 파일 생성)
+npx prisma init
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npx prisma init
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Initialized Prisma in your project
 
-## Deploy on Vercel
+prisma/
+schema.prisma
+prisma.config.ts
+.env
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+warn You already have a .gitignore file. Don't forget to add .env in it to not commit any private information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next, choose how you want to set up your database:
+
+CONNECT EXISTING DATABASE:
+
+1. Configure your DATABASE_URL in prisma.config.ts
+2. Run prisma db pull to introspect your database.
+
+CREATE NEW DATABASE:
+Local: npx prisma dev (runs Postgres locally in your terminal)
+Cloud: npx create-db (creates a free Prisma Postgres database)
+
+Then, define your models in prisma/schema.prisma and run prisma migrate dev to apply your schema.
+
+Learn more: https://pris.ly/getting-started
+
+npm install @prisma/adapter-mariadb
+
+데이터베이스에 테이블을 생성하기 위해 마이그레이션 실행
+npx prisma migrate dev --name init
