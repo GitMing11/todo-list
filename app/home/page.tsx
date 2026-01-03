@@ -9,7 +9,7 @@ import {
 	CalendarDays,
 } from 'lucide-react';
 import Link from 'next/link';
-import TodoInput from '../components/TodoInput'; // 1. 컴포넌트 import
+import TodoInput from '../components/TodoInput';
 
 import { createTodo, getTodoStats } from '../actions/todo';
 
@@ -136,10 +136,15 @@ export default function HomePage() {
 		fetchStats();
 	}, []);
 
-	// 3. 할 일 추가 핸들러 (Server Action 연결)
-	const handleAddTodo = async (text: string) => {
+	// 할 일 추가 핸들러 (Server Action 연결)
+	const handleAddTodo = async (data: {
+		title: string;
+		priority: 'HIGH' | 'MEDIUM' | 'LOW';
+		description?: string;
+		dueDate?: Date;
+	}) => {
 		try {
-			await createTodo(text); // DB에 저장
+			await createTodo(data.title, data.priority, data.dueDate);
 			await fetchStats();
 			alert('할 일이 추가되었습니다.');
 		} catch (e) {
@@ -163,7 +168,6 @@ export default function HomePage() {
 							</p>
 						</div>
 
-						{/* 4. TodoInput 컴포넌트 배치 */}
 						<div className="max-w-xl">
 							<TodoInput onAdd={handleAddTodo} />
 						</div>
