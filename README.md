@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# TODO
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+💡, ❓ 아이디어 고민
+💬 아이디어 결정
+⚡ 빠른 수정 필요
+⚠️ 수정해야 하는 부분
+🔍 검토, 확인 필요
+✔️ 수정 완료
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### home/page.tsx - 하드코딩된 숫자들 수정 필요
 
-To learn more about Next.js, take a look at the following resources:
+🔍 [0103] 추가, 삭제 시 숫자 변경되는 것 확인 필요
+💡 [0103] 추가되는 걸 홈에서 할 필요가 있을지?
+💡 [0103] Stats Section 부분을 지금처럼 확인만 하도록 할지, 상세 정보나 추가적인 동작을 넣는 게 나은지? -> 팝업??
+💬 [0104] 홈에서 추가, Stats Section 부분 팝업 형태로.
+⚠️ [0104] 계정 연결 후 해당 정보들 띄우도록.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### components/Todoinput.tsx - 디자인 맘에 안듦
 
-## Deploy on Vercel
+💡 [0103] 추가 시에 어디까지(날짜, 내용, 기타 등등) 입력을 받을 것인지?
+✔️ [0104] 수정 완료
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### login/page.tsx
+
+⚡ [0104] 로그인 시 유저 페이지로 넘어가야 함
+
+---
+
+Prisma와 클라이언트 설치
+npm install prisma --save-dev
+npm install @prisma/client
+
+Prisma 초기화 (prisma 폴더와 .env 파일 생성)
+npx prisma init
+
+npx prisma init
+
+Initialized Prisma in your project
+
+prisma/
+schema.prisma
+prisma.config.ts
+.env
+
+warn You already have a .gitignore file. Don't forget to add .env in it to not commit any private information.
+
+Next, choose how you want to set up your database:
+
+CONNECT EXISTING DATABASE:
+
+1. Configure your DATABASE_URL in prisma.config.ts
+2. Run prisma db pull to introspect your database.
+
+CREATE NEW DATABASE:
+Local: npx prisma dev (runs Postgres locally in your terminal)
+Cloud: npx create-db (creates a free Prisma Postgres database)
+
+Then, define your models in prisma/schema.prisma and run prisma migrate dev to apply your schema.
+
+Learn more: https://pris.ly/getting-started
+
+npm install @prisma/adapter-mariadb
+
+데이터베이스에 테이블을 생성하기 위해 마이그레이션 실행
+npx prisma migrate dev --name init

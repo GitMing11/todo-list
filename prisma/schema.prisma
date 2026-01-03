@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ------------------------------------------------------
+// 1. User 모델 (사용자 정보)
+// ------------------------------------------------------
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String?
+  password String? // OAuth 사용 시에는 선택 사항일 수 있음
+  image    String? // 프로필 이미지 URL
+
+  // 관계 설정: 한 명의 유저는 여러 개의 할 일을 가질 수 있음
+  todos Todo[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------
+// 2. Todo 모델 (할 일)
+// ------------------------------------------------------
+model Todo {
+  id          String  @id @default(cuid())
+  title       String
+  description String? @db.Text // 상세 설명
+  completed   Boolean @default(false)
+
+  dueDate  DateTime? // 마감일/날짜 (캘린더용)
+  priority Priority  @default(MEDIUM) // 우선순위
+
+  // User와의 관계 (Foreign Key)
+  userId String? // 로그인 기능이 아직 없다면 Optional(?), 있다면 필수(String)로 변경
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId]) // 특정 유저의 글을 빠르게 찾기 위한 인덱스
+  @@index([dueDate]) // 날짜별 조회 성능 향상
+}
+
+// 우선순위 관리를 위한 Enum
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
