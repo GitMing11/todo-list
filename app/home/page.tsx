@@ -139,12 +139,17 @@ export default function HomePage() {
 	// 할 일 추가 핸들러 (Server Action 연결)
 	const handleAddTodo = async (data: {
 		title: string;
-		priority: 'HIGH' | 'MEDIUM' | 'LOW';
 		description?: string;
+		priority: 'HIGH' | 'MEDIUM' | 'LOW';
 		dueDate?: Date;
 	}) => {
 		try {
-			await createTodo(data.title, data.priority, data.dueDate);
+			await createTodo(
+				data.title,
+				data.description,
+				data.priority,
+				data.dueDate
+			);
 			await fetchStats();
 			alert('할 일이 추가되었습니다.');
 		} catch (e) {
