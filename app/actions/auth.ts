@@ -13,7 +13,12 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    await signIn('credentials', formData, { redirectTo: '/user' });
+    const credentials = Object.fromEntries(formData);
+
+    await signIn('credentials', {
+      ...credentials,
+      redirectTo: '/user',
+    });
     
   } catch (error) {
     if (error instanceof AuthError) {
