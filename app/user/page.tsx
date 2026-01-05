@@ -3,7 +3,7 @@ import React from 'react';
 import { getTodoStats } from '../actions/todo';
 import UserSettings from '../components/UserSettings';
 import { Zap, User as UserIcon } from 'lucide-react';
-import { auth } from '@/app/auth'; // NextAuth 인증 함수
+import { auth } from '@/app/auth';
 import { redirect } from 'next/navigation';
 
 export const metadata = {
