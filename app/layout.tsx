@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'todo-list',
-	description: 'todo',
+	title: 'Todo List',
+	description: 'Todo',
 };
 
 export default async function RootLayout({

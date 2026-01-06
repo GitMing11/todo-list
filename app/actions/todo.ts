@@ -27,7 +27,8 @@ function revalidateTodos() {
 
 // --- Server Actions ---
 // 1. 할 일 가져오기
-export async function getTodos() {const userId = await getUserId();
+export async function getTodos() {
+  const userId = await getUserId();
   if (!userId) return [];
 
   const todos = await prisma.todo.findMany({
@@ -198,4 +199,53 @@ export async function resetTodos() {
   } catch (error) {
     console.error('Failed to reset todos:', error);
   }
+}
+
+// 필터별 할 일 가져오기 (팝업용)
+export async function getTodosByFilter(filter: 'ongoing' | 'completed' | 'urgent') {
+  const userId = await getUserId();
+  if (!userId) return [];
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  let whereCondition: any = { userId };
+
+  if (filter === 'ongoing') {
+    // 진행 중: 완료되지 않은 모든 일
+    whereCondition = { ...whereCondition, completed: false };
+  } else if (filter === 'completed') {
+    // 오늘 완료: 완료됨 AND 수정일이 오늘 0시 이후
+    whereCondition = {
+      ...whereCondition,
+      completed: true,
+      updatedAt: { gte: todayStart },
+    };
+  } else if (filter === 'urgent') {
+    // 급한 일: 완료되지 않음 AND 우선순위 HIGH
+    whereCondition = { ...whereCondition, completed: false, priority: 'HIGH' };
+  }
+
+  const todos = await prisma.todo.findMany({
+    where: whereCondition,
+    orderBy: { createdAt: 'desc' },
+  });
+
+  // 정렬 로직 적용
+  if (filter === 'ongoing' || filter === 'urgent') {
+    // 마감일이 임박한 순서로 정렬
+    return todos.sort((a, b) => {
+      if (a.dueDate && !b.dueDate) return -1;
+      if (!a.dueDate && b.dueDate) return 1;
+      if (a.dueDate && b.dueDate) {
+        return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+      }
+      return 0;
+    });
+  } else if (filter === 'completed') {
+    // 완료된 일은 최근에 완료한 순서(updatedAt 내림차순)로 정렬
+    return todos.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+  }
+
+  return todos;
 }
