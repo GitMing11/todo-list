@@ -1,12 +1,22 @@
 'use client';
 
-import React from 'react';
-import { Search, Bell, Sun, Moon, User } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+	Search,
+	Bell,
+	Sun,
+	Moon,
+	User,
+	AlertCircle,
+	Clock,
+	Flame,
+} from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { getNotificationTodos } from '@/app/actions/todo';
 
-// User 타입 정의 (필요한 필드만)
+// User 타입 정의
 type UserProps = {
 	name?: string | null;
 	image?: string | null;
@@ -20,6 +30,37 @@ interface HeaderProps {
 export default function Header({ user }: HeaderProps) {
 	const { isDarkMode, toggleTheme } = useTheme();
 	const pathname = usePathname();
+
+	// 알림 관련 상태
+	const [notifications, setNotifications] = useState<any[]>([]);
+	const [showNotifications, setShowNotifications] = useState(false);
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	// 알림 데이터 불러오기
+	const fetchNotifications = async () => {
+		if (user) {
+			const data = await getNotificationTodos();
+			setNotifications(data);
+		}
+	};
+
+	useEffect(() => {
+		fetchNotifications();
+	}, [user, pathname]);
+
+	// 외부 클릭 시 드롭다운 닫기
+	useEffect(() => {
+		function handleClickOutside(event: MouseEvent) {
+			if (
+				dropdownRef.current &&
+				!dropdownRef.current.contains(event.target as Node)
+			) {
+				setShowNotifications(false);
+			}
+		}
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, []);
 
 	const today = new Date().toLocaleDateString('ko-KR', {
 		month: 'long',
@@ -80,11 +121,6 @@ export default function Header({ user }: HeaderProps) {
 				<div className="flex items-center gap-2">
 					{/* <button className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight">
 						<Search className="w-5 h-5" />
-					</button>
-
-					<button className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight relative">
-						<Bell className="w-5 h-5" />
-						<span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-mainBg"></span>
 					</button> */}
 
 					<button
@@ -97,6 +133,87 @@ export default function Header({ user }: HeaderProps) {
 							<Moon className="w-5 h-5" />
 						)}
 					</button>
+
+					{/* 알림 버튼 */}
+					<div
+						className="relative"
+						ref={dropdownRef}
+					>
+						<button
+							onClick={() => setShowNotifications(!showNotifications)}
+							className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight relative"
+						>
+							<Bell className="w-5 h-5" />
+							{notifications.length > 0 && (
+								<span className="absolute top-0.5 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white font-bold border-2 border-mainBg">
+									{notifications.length > 9 ? '9+' : notifications.length}
+								</span>
+							)}
+						</button>
+
+						{/* 알림 드롭다운 */}
+						{showNotifications && (
+							<div className="absolute right-0 mt-2 w-80 bg-mainBg border border-subBg rounded-xl shadow-xl z-50 overflow-hidden animate-fade-in">
+								<div className="p-3 border-b border-subBg flex justify-between items-center bg-subBg/10">
+									<h3 className="font-bold text-sm text-highlight">
+										알림 ({notifications.length})
+									</h3>
+									<Link
+										href="/user"
+										className="text-xs text-textSub hover:underline"
+									>
+										설정
+									</Link>
+								</div>
+								<ul className="max-h-80 overflow-y-auto">
+									{notifications.length > 0 ? (
+										notifications.map((todo) => (
+											<li
+												key={todo.id}
+												className="p-3 hover:bg-subBg/30 border-b border-subBg/30 last:border-none transition-colors"
+											>
+												<div className="flex items-start gap-3">
+													<div className="mt-0.5 shrink-0">
+														{todo.priority === 'HIGH' ? (
+															<Flame className="w-4 h-4 text-red-500" />
+														) : (
+															<Clock className="w-4 h-4 text-orange-500" />
+														)}
+													</div>
+													<div>
+														<p className="text-sm font-medium text-highlight line-clamp-1">
+															{todo.title}
+														</p>
+														<p className="text-xs text-textSub mt-0.5">
+															{todo.dueDate
+																? new Date(todo.dueDate).toLocaleDateString()
+																: '마감일 없음'}
+															{' · '}
+															<span
+																className={`font-bold ${
+																	todo.priority === 'HIGH'
+																		? 'text-red-500'
+																		: todo.priority === 'MEDIUM'
+																		? 'text-orange-500'
+																		: 'text-blue-500'
+																}`}
+															>
+																{todo.priority}
+															</span>
+														</p>
+													</div>
+												</div>
+											</li>
+										))
+									) : (
+										<li className="p-8 text-center text-textSub text-sm">
+											<p>새로운 알림이 없습니다 🎉</p>
+										</li>
+									)}
+								</ul>
+							</div>
+						)}
+					</div>
 
 					<Link
 						href="/user"

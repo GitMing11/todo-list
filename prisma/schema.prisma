@@ -25,6 +25,12 @@ model User {
   // 관계 설정: 한 명의 유저는 여러 개의 할 일을 가질 수 있음
   todos Todo[]
 
+  // notifyPriority: 알림을 받을 최소 우선순위 (이 등급 이상이면 알림)
+  // 예: HIGH -> HIGH만 알림 / MEDIUM -> MEDIUM, HIGH 알림 / LOW -> 전체 알림
+  notifyPriority Priority @default(HIGH)
+
+  notifyDays Int @default(0) // notifyDays: 마감일 임박 기준 (0: 당일, 1: 1일전, ...)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

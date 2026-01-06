@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `user` ADD COLUMN `notifyDays` INTEGER NOT NULL DEFAULT 0,
+    ADD COLUMN `notifyPriority` ENUM('HIGH', 'MEDIUM', 'LOW') NOT NULL DEFAULT 'HIGH';
