@@ -6,7 +6,18 @@ import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function Header() {
+// User 타입 정의 (필요한 필드만)
+type UserProps = {
+	name?: string | null;
+	image?: string | null;
+};
+
+// Props 인터페이스 정의
+interface HeaderProps {
+	user?: UserProps;
+}
+
+export default function Header({ user }: HeaderProps) {
 	const { isDarkMode, toggleTheme } = useTheme();
 	const pathname = usePathname();
 
@@ -67,14 +78,14 @@ export default function Header() {
 
 				{/* 3. Right: 유틸리티 버튼 */}
 				<div className="flex items-center gap-2">
-					<button className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight">
+					{/* <button className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight">
 						<Search className="w-5 h-5" />
 					</button>
 
 					<button className="p-2 rounded-full hover:bg-subBg transition-colors text-textSub hover:text-highlight relative">
 						<Bell className="w-5 h-5" />
 						<span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-mainBg"></span>
-					</button>
+					</button> */}
 
 					<button
 						onClick={toggleTheme}
@@ -89,15 +100,31 @@ export default function Header() {
 
 					<Link
 						href="/user"
-						className={`ml-1 flex items-center justify-center w-8 h-8 rounded-full border transition-all
+						className={`
+                            ml-1 flex items-center gap-2 transition-all border
                             ${
 															pathname === '/user'
 																? 'bg-subBg border-highlight/30'
-																: 'bg-subBg border-highlight/10 hover:border-highlight/30'
+																: 'bg-subBg/50 border-highlight/10 hover:bg-subBg hover:border-highlight/30'
+														}
+                            ${
+															user
+																? 'pl-3 pr-1 py-1 rounded-full' // 로그인 시: 왼쪽 여백을 더 줘서 이름 공간 확보
+																: 'p-2 rounded-full' // 비로그인 시: 동그라미 유지
 														}
                         `}
 					>
-						<User className="w-4 h-4 text-highlight" />
+						{/* 로그인 상태일 때만 이름 표시 */}
+						{user && (
+							<span className="text-sm font-medium max-w-20 truncate hidden sm:block">
+								{user.name}
+							</span>
+						)}
+
+						{/* 사용자 아이콘 */}
+						<div className="flex items-center justify-center w-7 h-7 rounded-full bg-mainBg border border-subBg/50 shadow-sm">
+							<User className="w-4 h-4 text-highlight" />
+						</div>
 					</Link>
 				</div>
 			</div>

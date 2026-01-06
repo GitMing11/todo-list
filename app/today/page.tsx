@@ -53,7 +53,7 @@ export default async function TodayPage() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-3xl mx-auto space-y-10">
+				<div className="max-w-4xl mx-auto space-y-10">
 					{/* 페이지 헤더 */}
 					<div className="flex flex-col gap-2">
 						<h2 className="text-3xl font-bold text-highlight flex items-center gap-2">

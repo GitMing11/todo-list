@@ -9,9 +9,9 @@ import {
 	CalendarDays,
 } from 'lucide-react';
 import Link from 'next/link';
-import TodoInput from '../components/TodoInput';
+import AddTodoForm from '../components/AddTodoForm';
 
-import { createTodo, getTodoStats } from '../actions/todo';
+import { getTodoStats } from '../actions/todo';
 
 // ----------------------------------------------------------------------
 // 1. 타입 및 데이터 정의
@@ -136,32 +136,10 @@ export default function HomePage() {
 		fetchStats();
 	}, []);
 
-	// 할 일 추가 핸들러 (Server Action 연결)
-	const handleAddTodo = async (data: {
-		title: string;
-		description?: string;
-		priority: 'HIGH' | 'MEDIUM' | 'LOW';
-		dueDate?: Date;
-	}) => {
-		try {
-			await createTodo(
-				data.title,
-				data.description,
-				data.priority,
-				data.dueDate
-			);
-			await fetchStats();
-			alert('할 일이 추가되었습니다.');
-		} catch (e) {
-			console.error(e);
-			alert('오류가 발생했습니다.');
-		}
-	};
-
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-5xl mx-auto space-y-10">
+				<div className="max-w-4xl mx-auto space-y-10">
 					{/* Header Section */}
 					<section className="space-y-6">
 						<div>
@@ -174,7 +152,7 @@ export default function HomePage() {
 						</div>
 
 						<div className="max-w-xl">
-							<TodoInput onAdd={handleAddTodo} />
+							<AddTodoForm onSuccess={fetchStats} />
 						</div>
 					</section>
 

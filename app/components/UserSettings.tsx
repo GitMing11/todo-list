@@ -119,7 +119,7 @@ export default function UserSettings() {
 				<p className="text-xs text-textSub mb-2">Todo App v1.0.0</p>
 				<div className="flex justify-center gap-4">
 					<a
-						href="#"
+						href="https://github.com/GitMing11/todo-list"
 						className="text-textSub hover:text-highlight transition-colors"
 					>
 						<Github className="w-5 h-5" />

@@ -29,7 +29,7 @@ export default async function UserPage() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-xl mx-auto space-y-10">
+				<div className="max-w-4xl mx-auto space-y-10">
 					{/* 프로필 카드 (유저 정보 표시) */}
 					<section className="flex flex-col items-center text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
 						<div className="relative">
@@ -60,9 +60,7 @@ export default async function UserPage() {
 						</div>
 					</section>
 
-					{/* ... (통계 및 설정 메뉴는 기존과 동일) ... */}
 					<section className="grid grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-500 delay-100">
-						{/* ... 기존 통계 코드 ... */}
 						<div className="bg-mainBg border border-subBg rounded-2xl p-4 text-center shadow-sm">
 							<p className="text-textSub text-xs font-bold uppercase mb-1">
 								진행 중

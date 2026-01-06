@@ -2,7 +2,8 @@
 import React from 'react';
 import { getTodos } from '../actions/todo';
 import TodoItem from '../components/TodoItem';
-import { Layers, ListChecks } from 'lucide-react';
+import { Layers, ListChecks, ChevronDown } from 'lucide-react';
+import AddTodoForm from '../components/AddTodoForm';
 
 // 페이지 메타데이터
 export const metadata = {
@@ -22,7 +23,7 @@ export default async function AllTodosPage() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-3xl mx-auto space-y-8">
+				<div className="max-w-4xl mx-auto space-y-8">
 					{/* 페이지 헤더 */}
 					<div className="flex items-center justify-between">
 						<div>
@@ -38,6 +39,10 @@ export default async function AllTodosPage() {
 						</div>
 					</div>
 
+					<div className="mb-6">
+						<AddTodoForm />
+					</div>
+
 					{/* 할 일이 없을 때 표시 */}
 					{todos.length === 0 && (
 						<div className="py-20 text-center flex flex-col items-center justify-center text-textSub/50">
@@ -47,12 +52,18 @@ export default async function AllTodosPage() {
 						</div>
 					)}
 
-					{/* 진행 중인 할 일 목록 */}
+					{/* 진행 중인 할 일 목록 (토글 적용) */}
 					{activeTodos.length > 0 && (
-						<section className="space-y-4">
-							<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1">
-								진행 중 ({activeTodos.length})
-							</h3>
+						<details
+							className="group"
+							open
+						>
+							<summary className="flex items-center cursor-pointer list-none outline-none mb-4">
+								<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1 flex-1">
+									진행 중 ({activeTodos.length})
+								</h3>
+								<ChevronDown className="w-5 h-5 text-textSub transition-transform duration-200 group-open:rotate-180" />
+							</summary>
 							<div className="flex flex-col gap-3">
 								{activeTodos.map((todo) => (
 									<TodoItem
@@ -61,15 +72,21 @@ export default async function AllTodosPage() {
 									/>
 								))}
 							</div>
-						</section>
+						</details>
 					)}
 
-					{/* 완료된 할 일 목록 */}
+					{/* 완료된 할 일 목록 (토글 적용) */}
 					{completedTodos.length > 0 && (
-						<section className="space-y-4 pt-4">
-							<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1">
-								완료됨 ({completedTodos.length})
-							</h3>
+						<details
+							className="group pt-4"
+							open
+						>
+							<summary className="flex items-center cursor-pointer list-none outline-none mb-4">
+								<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1 flex-1">
+									완료됨 ({completedTodos.length})
+								</h3>
+								<ChevronDown className="w-5 h-5 text-textSub transition-transform duration-200 group-open:rotate-180" />
+							</summary>
 							<div className="flex flex-col gap-3">
 								{completedTodos.map((todo) => (
 									<TodoItem
@@ -78,7 +95,7 @@ export default async function AllTodosPage() {
 									/>
 								))}
 							</div>
-						</section>
+						</details>
 					)}
 				</div>
 			</main>

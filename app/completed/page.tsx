@@ -17,7 +17,7 @@ export default async function CompletedPage() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-3xl mx-auto space-y-8">
+				<div className="max-w-4xl mx-auto space-y-8">
 					{/* 페이지 헤더 */}
 					<div className="flex items-center justify-between">
 						<div>
