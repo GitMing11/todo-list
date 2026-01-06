@@ -145,7 +145,7 @@ export default function Header({ user }: HeaderProps) {
 						>
 							<Bell className="w-5 h-5" />
 							{notifications.length > 0 && (
-								<span className="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white font-bold border-2 border-mainBg">
+								<span className="absolute top-0.5 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white font-bold border-2 border-mainBg">
 									{notifications.length > 9 ? '9+' : notifications.length}
 								</span>
 							)}
