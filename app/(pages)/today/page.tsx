@@ -1,6 +1,6 @@
 import React from 'react';
-import { getTodos } from '../actions/todo';
-import TodoItem from '../components/TodoItem';
+import { getTodos } from '../../actions/todo';
+import TodoItem from '../../components/TodoItem';
 import { CalendarCheck, AlertCircle, CheckCircle2, Coffee } from 'lucide-react';
 import { isSameDay, isBefore, startOfDay } from 'date-fns';
 
@@ -53,7 +53,7 @@ export default async function TodayPage() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<main className="flex-1 px-4 py-8 md:px-8 md:py-12">
-				<div className="max-w-3xl mx-auto space-y-10">
+				<div className="max-w-4xl mx-auto space-y-10">
 					{/* 페이지 헤더 */}
 					<div className="flex flex-col gap-2">
 						<h2 className="text-3xl font-bold text-highlight flex items-center gap-2">
@@ -82,7 +82,24 @@ export default async function TodayPage() {
 						</div>
 					)}
 
-					{/* 1. 지연된 작업 (경고 표시) */}
+					{/* 1. 오늘 마감인 작업 */}
+					{todayTodos.length > 0 && (
+						<section className="space-y-4 animate-in slide-in-from-bottom-4 duration-500 delay-100">
+							<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1">
+								오늘 마감 ({todayTodos.length})
+							</h3>
+							<div className="flex flex-col gap-3">
+								{todayTodos.map((todo) => (
+									<TodoItem
+										key={todo.id}
+										todo={todo}
+									/>
+								))}
+							</div>
+						</section>
+					)}
+
+					{/* 2. 지연된 작업 (경고 표시) */}
 					{overdueTodos.length > 0 && (
 						<section className="space-y-4 animate-in slide-in-from-bottom-2 duration-500">
 							<div className="flex items-center gap-2 text-red-500 bg-red-500/10 px-4 py-3 rounded-xl border border-red-500/20">
@@ -93,23 +110,6 @@ export default async function TodayPage() {
 							</div>
 							<div className="flex flex-col gap-3">
 								{overdueTodos.map((todo) => (
-									<TodoItem
-										key={todo.id}
-										todo={todo}
-									/>
-								))}
-							</div>
-						</section>
-					)}
-
-					{/* 2. 오늘 마감인 작업 */}
-					{todayTodos.length > 0 && (
-						<section className="space-y-4 animate-in slide-in-from-bottom-4 duration-500 delay-100">
-							<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1">
-								오늘 마감 ({todayTodos.length})
-							</h3>
-							<div className="flex flex-col gap-3">
-								{todayTodos.map((todo) => (
 									<TodoItem
 										key={todo.id}
 										todo={todo}
