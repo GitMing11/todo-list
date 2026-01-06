@@ -44,7 +44,7 @@ export default function StatDetailModal({
 
 	return (
 		<div
-			className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-fade-in"
+			className="fixed inset-0 z-50 flex items-center justify-center bg-subBg/60 backdrop-blur-sm p-4 animate-fade-in"
 			onClick={handleBackdropClick}
 		>
 			<div className="bg-mainBg w-full max-w-sm md:max-w-md rounded-2xl border border-subBg shadow-2xl overflow-hidden transform transition-all flex flex-col max-h-[60vh]">

@@ -48,7 +48,7 @@ export default async function UserPage() {
 								</div>
 							</div>
 							<div className="absolute bottom-0 right-0 w-8 h-8 bg-green rounded-full border-4 border-mainBg flex items-center justify-center">
-								<Zap className="w-4 h-4 text-white fill-current" />
+								<Zap className="w-4 h-4 text-mainBg fill-current" />
 							</div>
 						</div>
 						<div>

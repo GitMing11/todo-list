@@ -9,7 +9,7 @@
   --color-textMain: var(--text-main);
   --color-textSub: var(--text-sub);
 
-  /* 상태별 컬러 (Semantic Names) */
+  /* 상태별 컬러 */
   --color-info: var(--status-info);
   --color-infoBg: var(--status-info-bg);
   
@@ -28,11 +28,9 @@
   --color-green: var(--status-green);
   --color-greenBg: var(--status-green-bg);
 
-  /* 🟡 Yellow (Standard Yellow) */
   --color-yellow: var(--status-yellow);
   --color-yellowBg: var(--status-yellow-bg);
 
-  /* 💜 새로 추가된 Purple (Standard Purple) */
   --color-purple: var(--status-purple);
   --color-purpleBg: var(--status-purple-bg);
 
@@ -47,70 +45,75 @@
 /* 2. CSS 변수 선언 */
 :root {
   /* Light Mode */
-  --main-bg: #f8f8ff;     /* 아주 연한 라벤더 */
-  --sub-bg: #ececf9;      /* 부드러운 라벤더 그레이 */
-  --highlight: #7e73ff;   /* 라벤더-청보라 */
+  --main-bg: #fff5f7;     /* Lavender Blush */
+  --sub-bg: #ffffff;      
   
-  --text-main: #2e2e3e;   /* 다크 그레이 */
-  --text-sub: #7a7a99;    /* 보라빛이 감도는 회색 */
+  --highlight: #c084fc;   /* Purple-400 */
+  
+  --text-main: #475569;   /* Slate-600 */
+  --text-sub: #94a3b8;    /* Slate-400 */
 
-  --status-info: #7e73ff;       /* 메인과 통일 */
-  --status-info-bg: #f0f0ff;    /* 아주 연한 보라 배경 */
+  /* 상태 컬러 (Light) */
+  --status-info: #7dd3fc;       /* Sky-300 */
+  --status-info-bg: #f0f9ff;    /* Sky-50 */
   
-  --status-success: #10b981;    /* Emerald */
-  --status-success-bg: #ecfdf5; 
+  --status-success: #6ee7b7;    /* Pastel Mint (초록) */
+  --status-success-bg: #f0fdfa; 
   
-  --status-warning: #f59e0b;    /* Amber (기존 경고색) */
+  --status-warning: #fcd34d;    /* Pastel Butter (노랑) */
   --status-warning-bg: #fffbeb; 
 
-  --status-red: #ef4444;        /* Red */
-  --status-red-bg: #fef2f2;
+  --status-red: #f472b6;        /* Pink-400 */
+  --status-red-bg: #fdf2f8;     /* Pink-50 */
 
-  --status-blue: #3b82f6;       /* Blue */
-  --status-blue-bg: #eff6ff;    
+  /* 개별 유틸리티 */
+  --status-blue: #7dd3fc;       /* Sky Blue */
+  --status-blue-bg: #f0f9ff;    
 
-  --status-green: #22c55e;      /* Green */
-  --status-green-bg: #f0fdf4;   
+  --status-green: #6ee7b7;      /* Mint Green */
+  --status-green-bg: #f0fdfa;   
 
-  --status-yellow: #eab308;     /* yellow-500 */
-  --status-yellow-bg: #fefce8;  /* yellow-50 */
+  --status-yellow: #fcd34d;     /* Butter Yellow */
+  --status-yellow-bg: #fffbeb;  
 
-  --status-purple: #a855f7;     /* purple */
-  --status-purple-bg: #faf5ff;  /* purple-50 */
+  --status-purple: #c084fc;     /* Pastel Purple */
+  --status-purple-bg: #faf5ff;  
 }
 
 .dark {
   /* Dark Mode */
-  --main-bg: #1e1e2e;     /* 깊은 바이올렛 네이비 */
-  --sub-bg: #2a2a3c;      /* 보조 다크 바이올렛 */
-  --highlight: #a5a0ff;   /* 다크모드용 밝은 라벤더 */
-
-  --text-main: #eaeaef;
-  --text-sub: #a0a0b0;
-
-  --status-info: #818cf8;       /* Indigo-400 */
-  --status-info-bg: #3730a3;    /* Indigo-900 */
+  --main-bg: #27272a;     /* Zinc-800 (Soft Charcoal) */
+  --sub-bg: #3f3f46;      /* Zinc-700 */
   
-  --status-success: #34d399;    
+  --highlight: #c4b5fd;   /* Pale Violet */
+
+  --text-main: #f4f4f5;   /* Zinc-100 */
+  --text-sub: #a1a1aa;    /* Zinc-400 */
+
+  /* 상태 컬러 (Dark) */
+  --status-info: #7dd3fc;       /* Dusty Sky */
+  --status-info-bg: #0c4a6e;    
+  
+  --status-success: #6ee7b7;    /* Dusty Mint */
   --status-success-bg: #064e3b; 
   
-  --status-warning: #fbbf24;    
+  --status-warning: #fcd34d;    /* Dusty Amber */
   --status-warning-bg: #78350f; 
 
-  --status-red: #f87171;     
+  --status-red: #f87171;        /* Dusty Salmon */
   --status-red-bg: #7f1d1d;
 
-  --status-blue: #60a5fa;       
-  --status-blue-bg: #1e3a8a;    
+  --status-blue: #7dd3fc;       
+  --status-blue-bg: #0c4a6e;    
 
-  --status-green: #4ade80;      
-  --status-green-bg: #14532d;   
+  --status-green: #6ee7b7;      
+  --status-green-bg: #064e3b;   
 
-  --status-yellow: #facc15;     /* yellow-400 */
-  --status-yellow-bg: #713f12;  /* yellow-900 */
+  --status-yellow: #fcd34d;     
+  --status-yellow-bg: #78350f;  
 
-  --status-purple: #c084fc;     /* purple-400 */
-  --status-purple-bg: #581c87;  /* purple-900 */
+  --status-purple: #c084fc;     
+  --status-purple-bg: #581c87;  
 }
 
 body {
