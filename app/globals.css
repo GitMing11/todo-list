@@ -47,7 +47,7 @@
 /* 2. CSS 변수 선언 */
 :root {
   /* Light Mode */
-  --main-bg: #f8f8ff;     /* GhostWhite (아주 연한 라벤더) */
+  --main-bg: #f8f8ff;     /* 아주 연한 라벤더 */
   --sub-bg: #ececf9;      /* 부드러운 라벤더 그레이 */
   --highlight: #7e73ff;   /* 라벤더-청보라 */
   

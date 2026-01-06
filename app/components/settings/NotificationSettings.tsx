@@ -62,7 +62,7 @@ export default function NotificationSettings() {
 						{[
 							{ value: 'LOW', label: '낮음 ~ 높음' },
 							{ value: 'MEDIUM', label: '중간 ~ 높음' },
-							{ value: 'HIGH', label: '높음 만' },
+							{ value: 'HIGH', label: '높음' },
 						].map((option) => (
 							<button
 								key={option.value}

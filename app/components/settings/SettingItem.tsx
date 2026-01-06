@@ -22,16 +22,14 @@ export default function SettingItem({
 		<button
 			onClick={onClick}
 			className={`w-full flex items-center justify-between p-4 bg-mainBg border border-subBg rounded-2xl transition-all duration-200 hover:border-highlight/30 hover:shadow-sm group ${
-				isDanger
-					? 'hover:bg-red-50 dark:hover:bg-red-900/10'
-					: 'hover:bg-subBg/30'
+				isDanger ? 'hover:bg-redBg' : 'hover:bg-subBg/30'
 			}`}
 		>
 			<div className="flex items-center gap-3">
 				<div
 					className={`p-2 rounded-full ${
 						isDanger
-							? 'bg-red-100 text-red'
+							? 'bg-redBg text-red'
 							: 'bg-subBg text-textSub group-hover:text-highlight'
 					}`}
 				>

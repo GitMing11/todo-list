@@ -73,7 +73,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 	// --- 유틸 ---
 	const priorityConfig = {
 		HIGH: { color: 'text-red', bg: 'bg-red/10' },
-		MEDIUM: { color: 'text-yellow-500', bg: 'bg-yellow-500/10' },
+		MEDIUM: { color: 'text-yellow', bg: 'bg-yellow/10' },
 		LOW: { color: 'text-blue', bg: 'bg-blue/10' },
 	};
 
@@ -248,7 +248,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 					<>
 						<button
 							onClick={handleSave}
-							className="p-2 text-green hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-all"
+							className="p-2 text-green hover:bg-greenBg rounded-lg transition-all"
 							title="저장"
 						>
 							<Save className="w-4 h-4" />

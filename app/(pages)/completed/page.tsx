@@ -1,7 +1,7 @@
 // app/completed/page.tsx
 import React from 'react';
-import { getCompletedTodos } from '../actions/todo';
-import TodoItem from '../components/TodoItem';
+import { getCompletedTodos } from '../../actions/todo';
+import TodoItem from '../../components/TodoItem';
 import { CheckCircle2, Trophy } from 'lucide-react';
 
 export const metadata = {
