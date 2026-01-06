@@ -68,9 +68,7 @@ export default function SignupPage() {
 						aria-live="polite"
 						aria-atomic="true"
 					>
-						{errorMessage && (
-							<p className="text-sm text-red-500">{errorMessage}</p>
-						)}
+						{errorMessage && <p className="text-sm text-red">{errorMessage}</p>}
 					</div>
 
 					<SignupButton />

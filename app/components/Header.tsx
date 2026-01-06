@@ -145,7 +145,7 @@ export default function Header({ user }: HeaderProps) {
 						>
 							<Bell className="w-5 h-5" />
 							{notifications.length > 0 && (
-								<span className="absolute top-0.5 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white font-bold border-2 border-mainBg">
+								<span className="absolute top-0.5 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red text-[10px] text-white font-bold border-2 border-mainBg">
 									{notifications.length > 9 ? '9+' : notifications.length}
 								</span>
 							)}
@@ -175,7 +175,7 @@ export default function Header({ user }: HeaderProps) {
 												<div className="flex items-start gap-3">
 													<div className="mt-0.5 shrink-0">
 														{todo.priority === 'HIGH' ? (
-															<Flame className="w-4 h-4 text-red-500" />
+															<Flame className="w-4 h-4 text-red" />
 														) : (
 															<Clock className="w-4 h-4 text-orange-500" />
 														)}
@@ -192,10 +192,10 @@ export default function Header({ user }: HeaderProps) {
 															<span
 																className={`font-bold ${
 																	todo.priority === 'HIGH'
-																		? 'text-red-500'
+																		? 'text-red'
 																		: todo.priority === 'MEDIUM'
 																		? 'text-orange-500'
-																		: 'text-blue-500'
+																		: 'text-blue'
 																}`}
 															>
 																{todo.priority}

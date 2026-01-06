@@ -95,8 +95,8 @@ export default function TodoInput({
 	const priorityConfig = {
 		HIGH: {
 			label: '높음',
-			color: 'text-red-500',
-			bg: 'bg-red-500/10',
+			color: 'text-red',
+			bg: 'bg-red/10',
 			ring: 'ring-red-500/30',
 		},
 		MEDIUM: {
@@ -107,7 +107,7 @@ export default function TodoInput({
 		},
 		LOW: {
 			label: '낮음',
-			color: 'text-blue-500',
+			color: 'text-blue',
 			bg: 'bg-blue-500/10',
 			ring: 'ring-blue-500/30',
 		},

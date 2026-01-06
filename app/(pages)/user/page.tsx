@@ -65,17 +65,13 @@ export default async function UserPage() {
 							<p className="text-textSub text-xs font-bold uppercase mb-1">
 								진행 중
 							</p>
-							<p className="text-2xl font-bold text-blue-500">
-								{stats.ongoing}
-							</p>
+							<p className="text-2xl font-bold text-blue">{stats.ongoing}</p>
 						</div>
 						<div className="bg-mainBg border border-subBg rounded-2xl p-4 text-center shadow-sm">
 							<p className="text-textSub text-xs font-bold uppercase mb-1">
 								오늘 완료
 							</p>
-							<p className="text-2xl font-bold text-green-500">
-								{stats.completed}
-							</p>
+							<p className="text-2xl font-bold text-green">{stats.completed}</p>
 						</div>
 						<div className="bg-mainBg border border-subBg rounded-2xl p-4 text-center shadow-sm">
 							<p className="text-textSub text-xs font-bold uppercase mb-1">

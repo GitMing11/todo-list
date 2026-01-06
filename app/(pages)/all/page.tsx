@@ -73,10 +73,10 @@ export default async function AllTodosPage() {
 						>
 							<summary className="flex items-center cursor-pointer list-none outline-none mb-4">
 								<div className="flex items-center gap-2 flex-1">
-									<h3 className="text-sm font-bold text-red-500 uppercase tracking-wider">
+									<h3 className="text-sm font-bold text-red uppercase tracking-wider">
 										지연됨 ({overdueTodos.length})
 									</h3>
-									<AlertCircle className="w-4 h-4 text-red-500" />
+									<AlertCircle className="w-4 h-4 text-red" />
 								</div>
 								<ChevronDown className="w-5 h-5 text-textSub transition-transform duration-200 group-open:rotate-180" />
 							</summary>

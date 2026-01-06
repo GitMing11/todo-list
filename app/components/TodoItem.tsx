@@ -72,9 +72,9 @@ export default function TodoItem({ todo }: TodoItemProps) {
 
 	// --- 유틸 ---
 	const priorityConfig = {
-		HIGH: { color: 'text-red-500', bg: 'bg-red-500/10' },
+		HIGH: { color: 'text-red', bg: 'bg-red/10' },
 		MEDIUM: { color: 'text-yellow-500', bg: 'bg-yellow-500/10' },
-		LOW: { color: 'text-blue-500', bg: 'bg-blue-500/10' },
+		LOW: { color: 'text-blue', bg: 'bg-blue-500/10' },
 	};
 
 	// 날짜 포맷팅 (시간 부분 제거)
@@ -156,7 +156,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 								<div
 									className={`flex items-center gap-1 ${
 										!todo.completed && new Date(todo.dueDate) < new Date()
-											? 'text-red-500'
+											? 'text-red'
 											: ''
 									}`}
 								>
@@ -238,7 +238,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 						</button>
 						<button
 							onClick={handleDelete}
-							className="p-2 text-textSub hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all"
+							className="p-2 text-textSub hover:text-red hover:bg-red/10 rounded-lg transition-all"
 							title="삭제"
 						>
 							<Trash2 className="w-4 h-4" />
@@ -248,14 +248,14 @@ export default function TodoItem({ todo }: TodoItemProps) {
 					<>
 						<button
 							onClick={handleSave}
-							className="p-2 text-green-600 hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-all"
+							className="p-2 text-green hover:bg-green-100 dark:hover:bg-green-900/30 rounded-lg transition-all"
 							title="저장"
 						>
 							<Save className="w-4 h-4" />
 						</button>
 						<button
 							onClick={handleCancel}
-							className="p-2 text-textSub hover:text-red-500 hover:bg-subBg rounded-lg transition-all"
+							className="p-2 text-textSub hover:text-red hover:bg-subBg rounded-lg transition-all"
 							title="취소"
 						>
 							<X className="w-4 h-4" />

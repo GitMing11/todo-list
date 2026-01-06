@@ -31,16 +31,14 @@ export default function SettingItem({
 				<div
 					className={`p-2 rounded-full ${
 						isDanger
-							? 'bg-red-100 text-red-500'
+							? 'bg-red-100 text-red'
 							: 'bg-subBg text-textSub group-hover:text-highlight'
 					}`}
 				>
 					<Icon className="w-5 h-5" />
 				</div>
 				<span
-					className={`font-medium ${
-						isDanger ? 'text-red-500' : 'text-highlight'
-					}`}
+					className={`font-medium ${isDanger ? 'text-red' : 'text-highlight'}`}
 				>
 					{label}
 				</span>

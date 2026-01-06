@@ -9,15 +9,24 @@
   --color-textMain: var(--text-main);
   --color-textSub: var(--text-sub);
 
-  /* 상태별 컬러 (새로 추가됨) */
-  --color-info: var(--status-info);       /* 진행 중 (파랑) */
-  --color-infoBg: var(--status-info-bg);  /* 진행 중 배경 */
+  /* 상태별 컬러 (Semantic Names) */
+  --color-info: var(--status-info);
+  --color-infoBg: var(--status-info-bg);
   
-  --color-success: var(--status-success);      /* 완료 (초록) */
-  --color-successBg: var(--status-success-bg); /* 완료 배경 */
+  --color-success: var(--status-success);
+  --color-successBg: var(--status-success-bg);
   
-  --color-warning: var(--status-warning);      /* 급함 (노랑/주황) */
-  --color-warningBg: var(--status-warning-bg); /* 급함 배경 */
+  --color-warning: var(--status-warning);
+  --color-warningBg: var(--status-warning-bg);
+
+  --color-red: var(--status-red);
+  --color-redBg: var(--status-red-bg);
+
+  --color-blue: var(--status-blue);
+  --color-blueBg: var(--status-blue-bg);
+
+  --color-green: var(--status-green);
+  --color-greenBg: var(--status-green-bg);
 
   /* 애니메이션 */
   --animate-fade-in: fade-in 0.2s ease-out;
@@ -30,42 +39,60 @@
 /* 2. CSS 변수 선언 */
 :root {
   /* Light Mode */
-  --main-bg: #DBEAFE;    /* 배경 */
-  --sub-bg: #BFDBFE;     /* 보조 배경 */
-  --highlight: #1E3A8A;  /* 강조 */
+  --main-bg: #f8f8ff;     /* GhostWhite (아주 연한 라벤더) */
+  --sub-bg: #ececf9;      /* 부드러운 라벤더 그레이 */
+  --highlight: #7e73ff;   /* 라벤더-청보라 */
   
-  --text-main: #1e293b;  /* 본문 */
-  --text-sub: #64748b;   /* 서브 텍스트 */
+  --text-main: #2e2e3e;   /* 다크 그레이 */
+  --text-sub: #7a7a99;    /* 보라빛이 감도는 회색 */
 
   /* 상태 컬러 (Light) */
-  --status-info: #2563eb;       /* blue-600 */
-  --status-info-bg: #eff6ff;    /* blue-50 */
+  --status-info: #7e73ff;       /* 메인과 통일 */
+  --status-info-bg: #f0f0ff;    /* 아주 연한 보라 배경 */
   
-  --status-success: #16a34a;    /* green-600 */
-  --status-success-bg: #f0fdf4; /* green-50 */
+  --status-success: #10b981;    /* Emerald */
+  --status-success-bg: #ecfdf5; 
   
-  --status-warning: #ca8a04;    /* yellow-600 */
-  --status-warning-bg: #fefce8; /* yellow-50 */
+  --status-warning: #f59e0b;    /* Amber */
+  --status-warning-bg: #fffbeb; 
+
+  --status-red: #ef4444;        /* Red */
+  --status-red-bg: #fef2f2;
+
+  --status-blue: #3b82f6;       /* Blue */
+  --status-blue-bg: #eff6ff;    
+
+  --status-green: #22c55e;      /* Green */
+  --status-green-bg: #f0fdf4;   
 }
 
 .dark {
   /* Dark Mode */
-  --main-bg: #1e1e1e;
-  --sub-bg: #2d2d2d;
-  --highlight: #ffffff;
+  --main-bg: #1e1e2e;     /* 깊은 바이올렛 네이비 */
+  --sub-bg: #2a2a3c;      /* 보조 다크 바이올렛 */
+  --highlight: #a5a0ff;   /* 다크모드용 밝은 라벤더 */
 
-  --text-main: #e2e8f0;
-  --text-sub: #94a3b8;
+  --text-main: #eaeaef;
+  --text-sub: #a0a0b0;
 
-  /* 상태 컬러 (Dark - 눈이 편안한 파스텔 톤 + 어두운 배경) */
-  --status-info: #60a5fa;       /* blue-400 */
-  --status-info-bg: #1e3a8a;    /* blue-900 (투명도 대신 짙은색 사용) */
+  /* 상태 컬러 (Dark) */
+  --status-info: #818cf8;       /* Indigo-400 */
+  --status-info-bg: #3730a3;    /* Indigo-900 */
   
-  --status-success: #4ade80;    /* green-400 */
-  --status-success-bg: #14532d; /* green-900 */
+  --status-success: #34d399;    
+  --status-success-bg: #064e3b; 
   
-  --status-warning: #facc15;    /* yellow-400 */
-  --status-warning-bg: #713f12; /* yellow-900 */
+  --status-warning: #fbbf24;    
+  --status-warning-bg: #78350f; 
+
+  --status-red: #f87171;     
+  --status-red-bg: #7f1d1d;
+
+  --status-blue: #60a5fa;       
+  --status-blue-bg: #1e3a8a;    
+
+  --status-green: #4ade80;      
+  --status-green-bg: #14532d;   
 }
 
 body {

@@ -22,12 +22,12 @@ export default async function CompletedPage() {
 					<div className="flex items-center justify-between">
 						<div>
 							<h2 className="text-3xl font-bold text-highlight flex items-center gap-2">
-								<CheckCircle2 className="w-8 h-8 text-green-500" />
+								<CheckCircle2 className="w-8 h-8 text-green" />
 								완료한 일
 							</h2>
 							<p className="text-textSub mt-1">
 								지금까지 총{' '}
-								<span className="text-green-500 font-bold">{todos.length}</span>
+								<span className="text-green font-bold">{todos.length}</span>
 								개의 일을 해냈어요! 🎉
 							</p>
 						</div>

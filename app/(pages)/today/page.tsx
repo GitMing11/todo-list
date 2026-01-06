@@ -57,7 +57,7 @@ export default async function TodayPage() {
 					{/* 페이지 헤더 */}
 					<div className="flex flex-col gap-2">
 						<h2 className="text-3xl font-bold text-highlight flex items-center gap-2">
-							<CalendarCheck className="w-8 h-8 text-blue-500" />
+							<CalendarCheck className="w-8 h-8 text-blue" />
 							오늘의 할 일
 						</h2>
 						<p className="text-textSub">
@@ -102,7 +102,7 @@ export default async function TodayPage() {
 					{/* 2. 지연된 작업 (경고 표시) */}
 					{overdueTodos.length > 0 && (
 						<section className="space-y-4 animate-in slide-in-from-bottom-2 duration-500">
-							<div className="flex items-center gap-2 text-red-500 bg-red-500/10 px-4 py-3 rounded-xl border border-red-500/20">
+							<div className="flex items-center gap-2 text-red bg-red/10 px-4 py-3 rounded-xl border border-red-500/20">
 								<AlertCircle className="w-5 h-5 shrink-0" />
 								<h3 className="font-bold text-sm">
 									기한이 지난 일 ({overdueTodos.length})
@@ -123,7 +123,7 @@ export default async function TodayPage() {
 					{completedTodayTodos.length > 0 && (
 						<section className="space-y-4 pt-4 animate-in slide-in-from-bottom-6 duration-500 delay-200">
 							<h3 className="text-sm font-bold text-textSub uppercase tracking-wider pl-1 flex items-center gap-2">
-								<CheckCircle2 className="w-4 h-4 text-green-500" />
+								<CheckCircle2 className="w-4 h-4 text-green" />
 								오늘 완료함 ({completedTodayTodos.length})
 							</h3>
 							<div className="flex flex-col gap-3">

@@ -82,7 +82,7 @@ export default function CalendarView({ todos }: CalendarViewProps) {
 
 	// 우선순위 색상 매핑
 	const dotColor = {
-		HIGH: 'bg-red-500',
+		HIGH: 'bg-red',
 		MEDIUM: 'bg-yellow-500',
 		LOW: 'bg-blue-500',
 	};
