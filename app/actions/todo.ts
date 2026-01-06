@@ -249,3 +249,47 @@ export async function getTodosByFilter(filter: 'ongoing' | 'completed' | 'urgent
 
   return todos;
 }
+
+export async function getNotificationTodos() {
+  const session = await auth();
+  if (!session?.user?.id) return [];
+  const userId = session.user.id;
+
+  // 1. 유저 설정 가져오기
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { notifyPriority: true, notifyDays: true },
+  });
+
+  // 설정이 없으면 기본값 사용 (HIGH, 0일)
+  const notifyPriority = user?.notifyPriority || 'HIGH';
+  const notifyDays = user?.notifyDays ?? 0;
+
+  // 2. 우선순위 필터 조건 계산 (선택한 등급 이상)
+  let priorityCondition: any[] = ['HIGH'];
+  if (notifyPriority === 'MEDIUM') priorityCondition = ['HIGH', 'MEDIUM'];
+  if (notifyPriority === 'LOW') priorityCondition = ['HIGH', 'MEDIUM', 'LOW'];
+
+  // 3. 날짜 기준 계산 (오늘 + N일)
+  const targetDate = new Date();
+  targetDate.setHours(23, 59, 59, 999); // 오늘 끝
+  targetDate.setDate(targetDate.getDate() + notifyDays);
+
+  // 4. 쿼리 실행 (OR 조건)
+  // 조건 A: 설정한 우선순위 이상인 미완료 작업
+  // 조건 B: 마감일이 (오늘 + N일) 이하인 미완료 작업 (이미 지난 것도 포함)
+  const todos = await prisma.todo.findMany({
+    where: {
+      userId,
+      completed: false,
+      OR: [
+        { priority: { in: priorityCondition as any } },
+        { dueDate: { lte: targetDate } },
+      ],
+    },
+    orderBy: { dueDate: 'asc' }, // 급한 순 정렬
+    take: 10, // 최대 10개만 표시
+  });
+
+  return todos;
+}
