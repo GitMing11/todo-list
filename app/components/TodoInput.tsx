@@ -97,19 +97,19 @@ export default function TodoInput({
 			label: '높음',
 			color: 'text-red',
 			bg: 'bg-red/10',
-			ring: 'ring-red-500/30',
+			ring: 'ring-red/30',
 		},
 		MEDIUM: {
 			label: '보통',
-			color: 'text-yellow-500',
-			bg: 'bg-yellow-500/10',
-			ring: 'ring-yellow-500/30',
+			color: 'text-yellow',
+			bg: 'bg-yellow/10',
+			ring: 'ring-yellow/30',
 		},
 		LOW: {
 			label: '낮음',
 			color: 'text-blue',
-			bg: 'bg-blue-500/10',
-			ring: 'ring-blue-500/30',
+			bg: 'bg-blue/10',
+			ring: 'ring-blue/30',
 		},
 	};
 

@@ -102,7 +102,7 @@ export default async function TodayPage() {
 					{/* 2. 지연된 작업 (경고 표시) */}
 					{overdueTodos.length > 0 && (
 						<section className="space-y-4 animate-in slide-in-from-bottom-2 duration-500">
-							<div className="flex items-center gap-2 text-red bg-red/10 px-4 py-3 rounded-xl border border-red-500/20">
+							<div className="flex items-center gap-2 text-red bg-red/10 px-4 py-3 rounded-xl border border-red/20">
 								<AlertCircle className="w-5 h-5 shrink-0" />
 								<h3 className="font-bold text-sm">
 									기한이 지난 일 ({overdueTodos.length})

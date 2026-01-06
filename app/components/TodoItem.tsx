@@ -74,7 +74,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
 	const priorityConfig = {
 		HIGH: { color: 'text-red', bg: 'bg-red/10' },
 		MEDIUM: { color: 'text-yellow-500', bg: 'bg-yellow-500/10' },
-		LOW: { color: 'text-blue', bg: 'bg-blue-500/10' },
+		LOW: { color: 'text-blue', bg: 'bg-blue/10' },
 	};
 
 	// 날짜 포맷팅 (시간 부분 제거)

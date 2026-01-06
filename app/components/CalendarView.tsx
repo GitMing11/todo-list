@@ -83,8 +83,8 @@ export default function CalendarView({ todos }: CalendarViewProps) {
 	// 우선순위 색상 매핑
 	const dotColor = {
 		HIGH: 'bg-red',
-		MEDIUM: 'bg-yellow-500',
-		LOW: 'bg-blue-500',
+		MEDIUM: 'bg-yellow',
+		LOW: 'bg-blue',
 	};
 
 	return (
@@ -124,7 +124,7 @@ export default function CalendarView({ todos }: CalendarViewProps) {
 						<div
 							key={day}
 							className={`text-center text-xs font-semibold py-2 ${
-								i === 0 ? 'text-red-400' : 'text-textSub'
+								i === 0 ? 'text-red' : 'text-textSub'
 							}`}
 						>
 							{day}

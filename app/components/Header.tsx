@@ -177,7 +177,7 @@ export default function Header({ user }: HeaderProps) {
 														{todo.priority === 'HIGH' ? (
 															<Flame className="w-4 h-4 text-red" />
 														) : (
-															<Clock className="w-4 h-4 text-orange-500" />
+															<Clock className="w-4 h-4 text-warning" />
 														)}
 													</div>
 													<div>
@@ -194,7 +194,7 @@ export default function Header({ user }: HeaderProps) {
 																	todo.priority === 'HIGH'
 																		? 'text-red'
 																		: todo.priority === 'MEDIUM'
-																		? 'text-orange-500'
+																		? 'text-warning'
 																		: 'text-blue'
 																}`}
 															>

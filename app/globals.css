@@ -28,6 +28,14 @@
   --color-green: var(--status-green);
   --color-greenBg: var(--status-green-bg);
 
+  /* 🟡 Yellow (Standard Yellow) */
+  --color-yellow: var(--status-yellow);
+  --color-yellowBg: var(--status-yellow-bg);
+
+  /* 💜 새로 추가된 Purple (Standard Purple) */
+  --color-purple: var(--status-purple);
+  --color-purpleBg: var(--status-purple-bg);
+
   /* 애니메이션 */
   --animate-fade-in: fade-in 0.2s ease-out;
   @keyframes fade-in {
@@ -46,14 +54,13 @@
   --text-main: #2e2e3e;   /* 다크 그레이 */
   --text-sub: #7a7a99;    /* 보라빛이 감도는 회색 */
 
-  /* 상태 컬러 (Light) */
   --status-info: #7e73ff;       /* 메인과 통일 */
   --status-info-bg: #f0f0ff;    /* 아주 연한 보라 배경 */
   
   --status-success: #10b981;    /* Emerald */
   --status-success-bg: #ecfdf5; 
   
-  --status-warning: #f59e0b;    /* Amber */
+  --status-warning: #f59e0b;    /* Amber (기존 경고색) */
   --status-warning-bg: #fffbeb; 
 
   --status-red: #ef4444;        /* Red */
@@ -64,6 +71,12 @@
 
   --status-green: #22c55e;      /* Green */
   --status-green-bg: #f0fdf4;   
+
+  --status-yellow: #eab308;     /* yellow-500 */
+  --status-yellow-bg: #fefce8;  /* yellow-50 */
+
+  --status-purple: #a855f7;     /* purple */
+  --status-purple-bg: #faf5ff;  /* purple-50 */
 }
 
 .dark {
@@ -75,7 +88,6 @@
   --text-main: #eaeaef;
   --text-sub: #a0a0b0;
 
-  /* 상태 컬러 (Dark) */
   --status-info: #818cf8;       /* Indigo-400 */
   --status-info-bg: #3730a3;    /* Indigo-900 */
   
@@ -93,6 +105,12 @@
 
   --status-green: #4ade80;      
   --status-green-bg: #14532d;   
+
+  --status-yellow: #facc15;     /* yellow-400 */
+  --status-yellow-bg: #713f12;  /* yellow-900 */
+
+  --status-purple: #c084fc;     /* purple-400 */
+  --status-purple-bg: #581c87;  /* purple-900 */
 }
 
 body {

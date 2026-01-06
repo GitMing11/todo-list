@@ -33,7 +33,7 @@ export default async function UserPage() {
 					{/* 프로필 카드 (유저 정보 표시) */}
 					<section className="flex flex-col items-center text-center space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
 						<div className="relative">
-							<div className="w-24 h-24 rounded-full bg-linear-to-tr from-blue-400 to-purple-500 p-1 shadow-lg">
+							<div className="w-24 h-24 rounded-full bg-linear-to-tr from-blue to-purple p-1 shadow-lg">
 								<div className="w-full h-full rounded-full bg-mainBg flex items-center justify-center border-4 border-transparent overflow-hidden">
 									{/* 프로필 이미지가 있으면 이미지 표시, 없으면 아이콘 */}
 									{session.user.image ? (
@@ -47,7 +47,7 @@ export default async function UserPage() {
 									)}
 								</div>
 							</div>
-							<div className="absolute bottom-0 right-0 w-8 h-8 bg-green-500 rounded-full border-4 border-mainBg flex items-center justify-center">
+							<div className="absolute bottom-0 right-0 w-8 h-8 bg-green rounded-full border-4 border-mainBg flex items-center justify-center">
 								<Zap className="w-4 h-4 text-white fill-current" />
 							</div>
 						</div>
@@ -77,7 +77,7 @@ export default async function UserPage() {
 							<p className="text-textSub text-xs font-bold uppercase mb-1">
 								달성률
 							</p>
-							<p className="text-2xl font-bold text-purple-500">
+							<p className="text-2xl font-bold text-purple">
 								{completionRate}%
 							</p>
 						</div>
