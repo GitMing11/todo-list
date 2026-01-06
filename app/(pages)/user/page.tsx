@@ -1,7 +1,7 @@
 // app/user/page.tsx
 import React from 'react';
-import { getTodoStats } from '../actions/todo';
-import UserSettings from '../components/UserSettings';
+import { getTodoStats } from '../../actions/todo';
+import UserSettings from '../../components/UserSettings';
 import { Zap, User as UserIcon } from 'lucide-react';
 import { auth } from '@/app/auth';
 import { redirect } from 'next/navigation';

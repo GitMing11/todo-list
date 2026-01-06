@@ -9,9 +9,9 @@ import {
 	CalendarDays,
 } from 'lucide-react';
 import Link from 'next/link';
-import AddTodoForm from '../components/AddTodoForm';
+import AddTodoForm from '../../components/AddTodoForm';
 
-import { getTodoStats } from '../actions/todo';
+import { getTodoStats } from '../../actions/todo';
 
 // ----------------------------------------------------------------------
 // 1. 타입 및 데이터 정의

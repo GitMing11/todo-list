@@ -1,9 +1,9 @@
 // app/all/page.tsx
 import React from 'react';
-import { getTodos } from '../actions/todo';
-import TodoItem from '../components/TodoItem';
-import { Layers, ListChecks, ChevronDown } from 'lucide-react';
-import AddTodoForm from '../components/AddTodoForm';
+import { getTodos } from '../../actions/todo';
+import TodoItem from '../../components/TodoItem';
+import { Layers, ListChecks, ChevronDown, AlertCircle } from 'lucide-react';
+import AddTodoForm from '../../components/AddTodoForm';
 
 // 페이지 메타데이터
 export const metadata = {
@@ -16,8 +16,21 @@ export const dynamic = 'force-dynamic';
 
 export default async function AllTodosPage() {
 	const todos = await getTodos();
+	const now = new Date();
+	// 1. 진행 중인 할 일 (미완료)
+	const incompleteTodos = todos.filter((t) => !t.completed);
 
-	const activeTodos = todos.filter((t) => !t.completed);
+	// 2. 지연된 할 일 (미완료 && 마감일 있음 && 마감일 < 현재)
+	const overdueTodos = incompleteTodos.filter(
+		(t) => t.dueDate && new Date(t.dueDate) < now
+	);
+
+	// 3. 정상 진행 중인 할 일 (미완료 && (마감일 없음 || 마감일 >= 현재))
+	const activeTodos = incompleteTodos.filter(
+		(t) => !t.dueDate || new Date(t.dueDate) >= now
+	);
+
+	// 4. 완료된 할 일
 	const completedTodos = todos.filter((t) => t.completed);
 
 	return (
@@ -52,7 +65,33 @@ export default async function AllTodosPage() {
 						</div>
 					)}
 
-					{/* 진행 중인 할 일 목록 (토글 적용) */}
+					{/* 지연된 할 일 목록 */}
+					{overdueTodos.length > 0 && (
+						<details
+							className="group"
+							open
+						>
+							<summary className="flex items-center cursor-pointer list-none outline-none mb-4">
+								<div className="flex items-center gap-2 flex-1">
+									<h3 className="text-sm font-bold text-red-500 uppercase tracking-wider">
+										지연됨 ({overdueTodos.length})
+									</h3>
+									<AlertCircle className="w-4 h-4 text-red-500" />
+								</div>
+								<ChevronDown className="w-5 h-5 text-textSub transition-transform duration-200 group-open:rotate-180" />
+							</summary>
+							<div className="flex flex-col gap-3 mb-8">
+								{overdueTodos.map((todo) => (
+									<TodoItem
+										key={todo.id}
+										todo={todo}
+									/>
+								))}
+							</div>
+						</details>
+					)}
+
+					{/* 진행 중인 할 일 목록 */}
 					{activeTodos.length > 0 && (
 						<details
 							className="group"
@@ -75,7 +114,7 @@ export default async function AllTodosPage() {
 						</details>
 					)}
 
-					{/* 완료된 할 일 목록 (토글 적용) */}
+					{/* 완료된 할 일 목록 */}
 					{completedTodos.length > 0 && (
 						<details
 							className="group pt-4"
